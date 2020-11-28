@@ -2,26 +2,32 @@
 
 using namespace std;
 
-class model {
-    public:
-    int x;
-    int y;
+// class model {
+//     public:
+//     int x;
+//     int y;
 
-    model(int a,int b){
-         x=a;
-         y=b;
-    };
+//     model(int a,int b){
+//          x=a;
+//          y=b;
+//     };
 
-    void print(){
-        cout<<x<<" "<<y;
-    }
-};
+//     void print(){
+//         cout<<x<<" "<<y;
+//     }
+// };
 
-int main(){
-    int x,y;
-    cin>>x>>y;
-    
-    model m(x,y);
-    m.print();
-    return 0;
+
+void fun(int *a)
+{
+    a = (int*)malloc(sizeof(int));
+}
+  
+int main()
+{
+    int *p = (int*)malloc(sizeof(int));
+ 
+    p = NULL;
+ 
+    free(p);
 }
