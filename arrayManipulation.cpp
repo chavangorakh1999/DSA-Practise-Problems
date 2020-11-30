@@ -5,17 +5,17 @@ using namespace std;
 int main(){
 
     // T is number of test cases size is actual size of array.
-    int T,size;
-    cin>>size>>T;
+    int T,n;
+    cin>>n>>T;
 
     //p is starting index q is ending index and num is entity by which index is to be incremented.
-    int p,q,num;
-    vector<long int> v(size+1,0);
+    int p=0,q=0,num=0;
+    vector<long int> v(n+1,0);
     // Taking input for T times and incrementing p index and decrementing q+1 index buy num. 
     for(int i=0; i< T;i++){
         cin>>p>>q>>num;
         v[p] += num;
-        if(q+1<=size){
+        if(q+1<=n){
             v[q+1]-=num;
         }
     }
