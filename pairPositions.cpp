@@ -12,6 +12,9 @@ long long int findOdd(long long int n){
 }
 
 int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
     int T;
     long long int A=0,B=0,count=0;
     cin>>T;
