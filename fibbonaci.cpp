@@ -21,6 +21,8 @@ bool checkSorted(int *arr,int size){
     // }
  bool smallAns=checkSorted(arr+1,size-1);
  
+
+
 if(!smallAns){
     return false;
 }
@@ -31,18 +33,56 @@ else
 {
     return true;
 }
+}
 
+int firstIndex(int *arr,int size,int x){
+    if(size==0){
+        return -1;
+    }
+    if(arr[0]==x){
+        return 0;
+    }
+    int ans=firstIndex(arr+1,size-1,x);
+    if(ans == -1){
+        return -1;
+    }else
+    {
+        return ans+1;
+    }
+    
 
+}
 
+int lastIndex(int *arr,int size,int x){
+    if(size==0){
+        return -1;
+    }
+    int ans = lastIndex(arr+1,size-1,x);
+    
+    if(ans==-1){
+        if(arr[0]==x){
+            return 0;
+        }else
+        {
+            return -1;
+        }
+        
+    }else
+    {
+        return ans+1;
+    }
+   
+    
 
 }
 
 
 int main(){
     // int arr[5]={1,4,6,7,3};
-    int arr[5]={1,2,3,4,5};
+    int arr[5]={1,2,5,4,5};
     // int n=fib(4);
 
-    cout<<checkSorted(arr,5)<<"\n";
+    // cout<<checkSorted(arr,5)<<"\n";
+    cout<<lastIndex(arr,5,9);
     return 0;
 }
