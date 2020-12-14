@@ -76,13 +76,57 @@ int lastIndex(int *arr,int size,int x){
 
 }
 
+int allIndexes(int *arr,int size,int x,int *output){
+    if(size==0){
+        return 0;
+    }
+    int ans=allIndexes(arr+1,size-1,x,output);
+    if(arr[0]==x){
+       for(int i=ans-1;i>=0;i--){
+           output[i+1]=output[i]+1;
+       }
+       output[0]=0;
+       
+       ans++;
+    }
+    else
+    {
+        
+       for(int i = ans - 1; i >= 0; i--){
+           output[i]=output[i]+1;
+       }
+    
+    }
+    return ans;
+   
+}
+
+void AllIndexes(int input[], int n, int x) 
+{ 
+    int output[n]; 
+    int size1 = allIndexes(input, n, x, output); 
+    for (int i = 0; i < size1; i++) { 
+        cout << output[i] << " "; 
+    } 
+} 
+
 
 int main(){
     // int arr[5]={1,4,6,7,3};
-    int arr[5]={1,2,5,4,5};
+    // int arr[5]={1,2,5,4,5};
     // int n=fib(4);
-
+    int size,x;
+    cin>>size;
+    int arr[size];
+    for(int i=0;i<size;i++){
+        cin>>arr[i];
+    }
+    cin>>x;
     // cout<<checkSorted(arr,5)<<"\n";
-    cout<<lastIndex(arr,5,9);
+    // cout<<lastIndex(arr,5,9);
+    AllIndexes(arr,size,x);
+  
+
+
     return 0;
 }
