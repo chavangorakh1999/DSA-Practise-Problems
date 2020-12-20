@@ -1,16 +1,12 @@
 #include<iostream>
 using namespace std;
-
-int main(){
-    int t;
-    cin>>t;
-    while(t--){
-         int X;
+void run_case() {
+    int X;
     cin >> X;
  
     if (X > 45) {
         cout << -1 << '\n';
-        return 0;
+        return;
     }
  
     int current = 9;
@@ -27,7 +23,17 @@ int main(){
     }
  
     cout << str << '\n';
-    }
+}
+ 
+int main() {
+    ios::sync_with_stdio(false);
 
-    return 0;
+    cin.tie(nullptr);
+
+ 
+    int tests;
+    cin >> tests;
+ 
+    while (tests-- > 0)
+        run_case();
 }
