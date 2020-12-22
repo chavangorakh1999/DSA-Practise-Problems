@@ -1,31 +1,41 @@
 #include <iostream>
 using namespace std;
 
-void mergeSort(int *a, int startIndex, int endIndex)
+void merge(int *array,int low,int mid,int high )
 {
-    if (startIndex > endIndex)
+	int temp[high];
+	int i = low;
+	int j = mid +1 ;
+	int k = low ;
+
+	while( (i <= mid) && (j <=high) )
+	{
+		if(array[i] <= array[j])
+			temp[k++] = array[i++] ;
+		else
+			temp[k++] = array[j++] ;
+	}/*End of while*/
+	
+	while( i <= mid )
+		temp[k++]=array[i++];
+	
+	while( j <= high )
+		temp[k++]=array[j++];
+
+	for(i= low; i <= high ; i++)
+		array[i]=temp[i];
+	
+}
+void mergeSort(int a[], int startIndex, int endIndex)
+{
+    if (startIndex >= endIndex)
     {
         return;
     }
     int mid = (startIndex + endIndex) / 2;
     mergeSort(a, startIndex, mid);
     mergeSort(a, mid + 1, endIndex);
-    int b[endIndex+1];
-    int k = 0;
-    for (int i = startIndex, j = mid + 1; j <= endIndex; i++, j++)
-    {
-        if (a[i] > a[j])
-        {
-            b[k++] = a[j];
-        }
-        else
-        {
-            b[k++] = a[i];
-        }
-    }
-    for(int i=0;i<=endIndex;i++){
-        a[i]=b[i];
-    }
+    merge(a,startIndex,mid,endIndex);
 }
 
 int main()
@@ -38,5 +48,8 @@ int main()
         cin >> a[i];
     }
     mergeSort(a,0,n-1);
+     for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
     return 0;
 }
