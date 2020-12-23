@@ -1,0 +1,507 @@
+
+Q2.Catch_The_Theif
+
+A policeman wants to catch a thief. Both the policeman and the thief can only move on a line on integer coordinates between 0
+and N
+
+(inclusive).
+
+Initially, the policeman is at a coordinate x
+and the thief is at a coordinate y. During each second, each of them must move to the left or right (not necessarily both in the same direction) by distance exactly equal to K. No one may go to the left of the coordinate 0 or to the right of N
+
+. Both the policeman and the thief move simultaneously and they cannot meet while moving, only at the end of each second.
+
+Will the policeman be able to catch the thief if they both move optimally? The thief is caught as soon as the policeman and thief meet at the same position at the same time.
+Input
+
+    The first line of the input contains a single integer T
+
+denoting the number of test cases. The description of T
+test cases follows.
+The first and only line of each test case contains four space-separated integers x
+, y, K and N
+
+    .
+
+Output
+
+For each test case, print a single line containing the string "Yes" if the thief can be caught or "No" if the thief cannot be caught (without quotes).
+Constraints
+
+1≤T≤1,000
+1≤N≤109
+1≤K≤N
+0≤x,y≤N
+x≠y
+
+Example Input
+
+5
+0 1 1 1
+1 4 1 5
+4 2 1 7
+3 7 2 10
+8 2 3 15
+
+Example Output
+
+No
+No
+Yes
+Yes
+Yes
+
+Explanation
+
+Example case 1: The policeman is at 0
+and the thief is at 1. After the 1-st second, the policeman is at 1 and the thief is at 0. After the next second, the policeman is again at 0 and the thief at 1. They cannot end up at the same coordinate.
+
+
+Q2.Self_Distructing_string
+
+A binary string is called a self-destructing string if it can reduced to an empty string by performing the following operation some number of times (possibly zero): Choose a valid integer i such that the i-th character of the current string is different from the i+1
+
+-th character, and remove these two characters from the string.
+
+You are given a binary string s
+. Your task is to convert s to a self-destructing string. To do that, you may perform the following operation any number of times (possibly zero): Choose an integer i (1≤i≤|s|−1) such that the i-th character of s is different from the i+1
+
+-th character, and invert one of these characters (inverting a character means changing '0' to '1' or '1' to '0', e.g. the string "01" can be changed to "00").
+
+Find the smallest number of operations required to convert s
+
+to a self-destructing string or determine that it is impossible.
+Input
+
+    The first line of the input contains a single integer T
+
+denoting the number of test cases. The description of T
+test cases follows.
+The first and only line of each test case contains a single string s
+
+    .
+
+Output
+
+For each test case, print a single line containing one integer ― the smallest required number of operations or −1
+if it is impossible to convert s
+
+to a self-destructing string.
+Constraints
+
+    1≤T≤1,000
+
+1≤|s|≤106
+s
+contains only characters '0' and '1'
+the sum of |s|
+over all test cases does not exceed 106
+
+Example Input
+
+3
+001101
+1101
+110
+
+Example Output
+
+0
+1
+-1
+
+Explanation
+
+Example case 1: We already have a self-destructing string because "001101" can be converted to "0101", to "01" and finally to an empty string.
+
+Example case 2: We can choose i=3
+(since s3≠s4) and then invert s4
+
+to obtain "1100", which is a self-destructing string.
+
+Example case 3: It can be shown that "110" cannot be converted to a self-destructing string.
+
+Q4.Circle_of_chaos
+
+You are an evil sorcerer at a round table with N sorcerers (including yourself). You can cast M spells which have distinct powers p1,p2,…,pM
+
+.
+
+You may perform the following operation any number of times (possibly zero):
+
+    Assign a living sorcerer to each positive integer cyclically to your left starting from yourself ― the closest living sorcerer to your left is assigned to 1
+
+, the next living sorcerer to the left is assigned to 2
+and so on. Note that each living sorcerer (including yourself) is assigned to an infinite number of integers.
+Choose a spell j
+(possibly a spell you have chosen before) and kill the living sorcerer assigned to pj
+
+    . You may not cast a spell to kill yourself.
+
+What is the maximum number of sorcerers you can kill using zero or more operations?
+Input
+
+    The first line of the input contains a single integer T
+
+denoting the number of test cases. The description of T
+test cases follows.
+The first line of each test case contains two space-separated integers N
+and M
+.
+The second line contains M
+space-separated integers p1,p2,…,pM
+
+    .
+
+Output
+
+For each test case, print a single line containing one integer ― the maximum number of sorcerers you can kill.
+Constraints
+
+    1≤T≤1,000
+
+1≤N≤109
+1≤M≤3⋅105
+1≤pi≤109
+for each valid i
+p1,p2,…,pN
+are pairwise distinct
+the sum of M
+over all test cases does not exceed 3⋅105
+
+Example Input
+
+5
+4 1
+5
+6 2
+2 4
+1 4
+7 16 8 29
+1000000000 1
+998244353
+1 1
+20201220
+
+Example Output
+
+3
+4
+0
+1755647
+0
+
+Explanation
+
+Example case 1: The initial state is shown in the figure from the statement. We can first use spell 1
+and kill the 5-th sorcerer to our left, i.e. sorcerer 2. Now there are 3
+
+living sorcerers and the state is as shown in the following figure:
+
+
+We can use spell 1
+again and kill the current 5-th living sorcerer to our left, i.e. sorcerer 4. Now there are 2
+
+living sorcerers and the state is:
+
+Finally, we can use spell 1
+again and kill the only other living sorcerer, i.e. sorcerer 3
+
+. Now, none of the other sorcerers are alive. As we cannot cast a spell to kill ourselves, we cannot improve the answer any further.
+
+Example case 2: We can perform 4
+operations using the spell p1=2 each time. We can also instead use p2=4 in the first two operations and p1=2
+
+in the last two operations. Note that there may be multiple valid sequences of operations that lead to the best answer.
+
+Example case 3: We cannot perform any operations using any of the given spells, so we are unable to kill any sorcerers.
+
+Example case 4: We can perform 1,755,647
+operations, each of them using the spell p1=998,244,353.
+
+Q5.Sed_password
+
+The notorious hacker group "Sed" managed to obtain a string S
+
+from their secret sources. The string contains only lowercase English letters along with the character '?'.
+
+A substring of S
+
+is a contiguous subsequence of that string. For example, the string "chef" is a substring of the string "codechef", but the string "codeh" is not a substring of "codechef".
+
+A substring of S
+is good if it is possible to choose a lowercase English letter C
+
+such that the following process succeeds:
+
+    Create a string R
+
+, which is a copy of the substring, but with each '?' replaced by the letter c
+. Note that all occurrences of '?' must be replaced by the same letter.
+For each lowercase English letter:
+
+    Compute the number of times it occurs in S
+
+and the number of times it occurs in R; let's denote them by A and B respectively. The '?' characters in the original string S are ignored when computing A
+.
+Check the parity of A
+and B
+
+    . If they do not have the same parity, i.e. one of them is even while the other is odd, then this process fails.
+
+If the parities of the number of occurrences in S
+and R
+
+    are the same for each letter, the process succeeds.
+
+For different substrings, we may choose different values of C
+
+.
+
+Help Sed find the number of good substrings in the string S
+
+.
+Input
+
+    The first line of the input contains a single integer T
+
+denoting the number of test cases. The description of T
+test cases follows.
+The first and only line of each test case contains a single string S
+
+    .
+
+Output
+
+For each test case, print a single line containing one integer ― the number of good substrings.
+Constraints
+
+    1≤T≤105
+
+1≤S≤105
+S
+contains only lowercase English letters ('a' through 'z') and '?'
+the sum of |S|
+over all test cases does not exceed 105
+
+Example Input
+
+5
+aa?
+a???
+????
+asfhaslskfak
+af??avvnfed?fav?faf????
+
+Example Output
+
+2
+6
+4
+2
+27
+
+Explanation
+
+Example case 1: All letters occur an even number of times in S
+. The six substrings of S
+
+are "a", "a", "?", "aa", "a?" and "aa?" (note that "a" is counted twice). Which of them are good?
+
+    "a" is not good as 'a' occurs an odd number of times in this substring and there are no '?' to replace.
+    "?" is also not good as replacing '?' by any letter causes this letter to occur in R
+
+an odd number of times.
+"aa" is a good substring because each letter occurs in it an even number of times and there are no '?' to replace.
+"a?" is also a good substring. We can replace '?' with 'a'. Then, R
+is "aa" and each letter occurs in this string an even number of times. Note that replacing '?' e.g. with 'b' would not work (R would be "ab", where both 'a' and 'b' occur an odd number of times), but we may choose the replacement letter C
+appropriately.
+"aa?" is not a good substring. For any replacement letter C
+, we find that C occurs an odd number of times in R
+
+    .
+
+Example case 2: We especially note that "a???" is not a good substring. Since all '?' have to be replaced by the same character, we can only get strings of the form "aaaa", "abbb", "accc", etc., but none of them match the criteria for a good substring.
+
+Example case 3: Any substring with even length is good.
+
+Q6.Carry_all_fruits
+
+Chef wants to run a restaurant for N days (numbered 1 through N
+
+).
+
+First, Chef needs to buy some plates. Each of these plates should have a positive integer capacity. Chef must decide in advance the number of plates M
+to buy as well as their capacities (not necessarily the same for each plate). A plate with capacity c cannot hold more than c fruits and it is called half-full if it holds at least ceil(c/2) fruits. Initially, all plates are empty and numbered 1 through M
+
+.
+
+Chef needs to satisfy his guests on each of the N
+days. For each day i
+
+:
+
+    On the morning of this day, Chef unlocks an infinite supply of fruit of the i
+
+-th type. He may use these fruits any number of times during the i
+-th day and all days that follow.
+In the afternoon, he may choose up to 4
+fruits and add them to some of the plates. The fruits may be of any types (possibly the same type) and they may be added to any plates independently from each other (possibly all to the same plate). For example, if this is the 5-th day and Chef has 3 plates, he may choose fruits of types {1,1,3,4}, add fruits of types 1 and 4 to the second plate and fruits of types 1 and 3
+to the third plate.
+By the evening of this day, he must present a single plate containing at least one of each type of fruit between 1
+and i
+
+    inclusive. Additionally, the plate must be at least half-full, otherwise it would look empty and his guests would not be satisfied.
+
+Note that the same plate may be presented multiple times. When a plate is presented, the fruits on it remain (do not get eaten).
+
+Help Chef decide the number of plates, the capacity of each plate, as well as the types of fruits to pick each day and the plates to add them to. Chef does not need to minimise the number of plates or their capacities, but the number of plates must not exceed 1,000
+and their capacities must not exceed N
+
+. You may find any valid solution. It is guaranteed that under the given constraints, a solution always exists.
+Input
+
+    The first line of the input contains a single integer T
+
+denoting the number of test cases. The description of T
+test cases follows.
+The first and only line of each test case contains a single integer N
+
+    .
+
+Output
+
+For each test case:
+
+    First, print a line containing a single integer M
+
+― the number of plates Chef should use (M must not exceed 1,000
+).
+Then, print a line containing M
+space-separated integers C1,C2,…,CM ― the capacities of the plates (1≤Ci≤N for each valid i
+).
+Next, for each day i
+from 1 to N:
+
+    Print a line containing a single integer Ki
+
+― the number of fruits Chef should pick on the i-th afternoon (1≤Ki≤4
+).
+Then, print Ki
+lines describing these fruits. Each of these lines should contain two space-separated integers F and P (1≤F≤i, 1≤P≤M
+
+        ) ― the type of added fruit and the plate to which it should be added.
+
+Constraints
+
+    1≤T≤1,000
+
+1≤N≤105
+the sum of N
+over all test cases does not exceed 105
+
+Example Input
+
+1
+3
+
+Example Output
+
+3
+1 2 3
+4
+1 1
+1 2
+1 2
+1 3
+1
+2 3
+1
+3 3
+
+Explanation
+
+Chef can use 3
+plates with capacities 1, 2 and 3 in this order. In the morning on the 1-st day, fruit of type 1 becomes available to Chef. He can transfer 1 fruit of type 1 to each of plates 1, 3 and 2 fruits of type 1 to plate 2. Afterwards, plates 1 and 2
+
+satisfy both our conditions (they contain fruits of all the types till now and are at least half-filled).
+
+In the morning on the 2
+-nd day, Chef gets the supply of fruit of type 2. He can transfer 1 fruit of type 2 to plate 3. Now plate 3
+
+satisfies the required conditions.
+
+Then, in the afternoon on the 3
+-rd day, Chef can add a fruit of type 3 to plate 3, so that this plate satisfies the required conditions. This is one possible solution.
+
+Q7.Mysterious_Sequence
+
+Joshua is hiding a sequence A1,A2,…,AN, where N
+
+is even. He wants to play a game with you. Your goal is to guess the sequence.
+
+First, Joshua tells you A1
+and AN. Then, you should ask him queries. In each query, you choose four integers L1, R1, L2 and R2 such that 1≤L1<R1≤N and 1≤L2<R2≤N, and Joshua's answer is the maximum of AL1,AL1+1,…,AR1 minus the minimum of AL2,AL2+1,…,AR2
+
+.
+
+Can you find the sequence using no more than 2N
+
+queries?
+Interaction
+
+    First, you should read a line containing three space-separated integers N
+
+, A1 and AN
+.
+Then you may ask queries. To ask a query:
+
+    Print a line containing the character 'Q' followed by a space and four space-separated integers L1
+
+, R1, L2 and R2
+
+    .
+    Then, read a line containing one integer ― the answer to the query.
+
+When you think you know the sequence, print a single line containing the character '!' followed by a space and N
+space-separated integers A1,A2,…,AN
+
+    describing your guess.
+
+Don't forget to flush the output after printing each line!
+Constraints
+
+    2≤N≤105
+
+N
+is even
+1≤Ai≤109
+for each valid i
+
+Example
+
+You                         Grader
+                            4 1 1
+Q 1 2 3 4
+                            1
+Q 3 4 1 3
+                            2
+! 1 2 3 1
+
+Explanation
+
+Joshua has the sequence [1,2,3,1]
+
+.
+
+For the first query, the maximum of A1,A2
+is 2 and the minimum of A3,A4 is 1, so the answer to this query is 2−1=1
+
+.
+
+For the second query, the maximum of A3,A4
+is 3 and the minimum of A1,A3 is 1, so the answer is 3−1=2
+
+.
+
+Finally, we correctly guess the sequence by printing "! 1 2 3 1".
