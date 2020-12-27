@@ -3,10 +3,12 @@
 using namespace std;
 
 int main(){
-    StackUsingArray s;
-    s.push(5);
-    s.pop();
-     s.push(5);
-    cout<<s.size();
-    return 0;
+int t;
+cin>>t;
+StackUsingArray s;
+while(t--){
+s.push(10);
+}
+cout<<s.size();
+return 0;
 }
