@@ -1,8 +1,2 @@
-
-c
-r
-rc
-g
-gc
-gr
-grc
+2
+2
