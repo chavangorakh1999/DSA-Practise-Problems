@@ -9,6 +9,7 @@ StackUsingArray s;
 while(t--){
 s.push(10);
 }
+s.push(50);
 cout<<s.size();
 return 0;
 }

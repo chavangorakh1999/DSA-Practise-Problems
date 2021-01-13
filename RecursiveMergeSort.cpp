@@ -1,4 +1,5 @@
 #include <iostream>
+#include<algorithms>
 using namespace std;
 
 void merge(int *array,int low,int mid,int high )
@@ -11,7 +12,7 @@ void merge(int *array,int low,int mid,int high )
 	while( (i <= mid) && (j <=high) )
 	{
 		if(array[i] <= array[j])
-			temp[k++] = array[i++] ;
+		temp[k++] = array[i++] ;
 		else
 			temp[k++] = array[j++] ;
 	}/*End of while*/

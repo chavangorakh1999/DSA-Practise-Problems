@@ -8,7 +8,7 @@ class StackUsingArray{
 
     public:
 
-    StackUsingArray(){
+   StackUsingArray(){
         data=new int[4];
         nextIndex=0;
         capacity=4;
