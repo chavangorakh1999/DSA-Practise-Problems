@@ -1,15 +1,17 @@
 #include<iostream>
-#include"stackUsingArray.cpp"
+#include"stackUsingLinkedList.cpp"
 using namespace std;
 
 int main(){
 int t;
 cin>>t;
-StackUsingArray s;
+Stack<char>   s;
 while(t--){
-s.push(10);
+s.push(100);
 }
-s.push(50);
-cout<<s.size();
+s.push(105);
+cout<<s.getSize();
+cout<<s.pop();
+cout<<s.pop();
 return 0;
 }
