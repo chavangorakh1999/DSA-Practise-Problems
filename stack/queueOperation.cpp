@@ -1,10 +1,10 @@
 #include<iostream>
-#include "queueUsingArray.h"
+#include "queueUsingLinkedLIst.h"
 
 using namespace std;
 
 int main(){
-    queue<int> q(5);
+    Queue<int> q;
 
     q.enqueue(10);
     q.enqueue(20);
@@ -15,6 +15,9 @@ int main(){
 
     
     cout<<q.dequeue()<<endl;
+    cout<<q.dequeue()<<endl;
+    cout<<q.dequeue()<<endl;
     cout<<q.getSize()<<endl;
+    cout<<q.front();
 
 }
