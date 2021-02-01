@@ -1,28 +1,3 @@
-Enter root Data
-Enter Left child of1
-Enter Right child of1
-Enter Left child of2
-Enter Right child of2
-Enter Left child of3
-Enter Right child of3
-Enter Left child of3
-Enter Right child of3
-Enter Left child of4
-Enter Right child of4
-Enter Left child of5
-Enter Right child of5
-Enter Left child of6
-Enter Right child of6
-Enter Left child of7
-Enter Right child of7
-Enter Left child of8
-Enter Right child of8
-1:L2 R3 
-2:L3 R4 
-3:L5 R6 
-3:L7 R8 
-4:
-5:
-6:
-7:
-8:
+6
+Height 4
+Diameter 6
