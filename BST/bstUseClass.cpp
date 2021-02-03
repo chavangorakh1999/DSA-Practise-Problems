@@ -67,6 +67,18 @@ void printInRange(BinarySearchTreeNode<int>* root,int min,int max){
 
 }
 
+bool isBST(BinarySearchTreeNode<int>* root,int min= INT_MIN,int max=INT_MAX){
+    if(root ==NULL){
+        return true;
+    }
+    if(root->data < min || root->data > max){
+        return false;
+    }
+    bool isLeftOk=isBST(root->left,min,root->data - 1);
+    bool isRightOk=isBST(root->right,root->data,max);
+    return isLeftOk && isRightOk;
+}
+
 int main(){
     BinarySearchTreeNode<int>*root=takeTreeInput();
     printInRange(root,20,50);
