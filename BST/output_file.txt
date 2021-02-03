@@ -1,15 +1,7 @@
-Enter root Data: Enter Left Child of 40
-Enter right child of 40
-Enter Left Child of 20
-Enter right child of 20
-Enter Left Child of 60
-Enter right child of 60
-Enter Left Child of 10
-Enter right child of 10
-Enter Left Child of 30
-Enter right child of 30
-Enter Left Child of 50
-Enter right child of 50
-Enter Left Child of 70
-Enter right child of 70
-20 30 40 50 
+4 : L2R6
+2 : L1R3
+6 : L5R7
+1 : 
+3 : 
+5 : 
+7 : 
