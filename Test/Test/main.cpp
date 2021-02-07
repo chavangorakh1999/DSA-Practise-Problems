@@ -92,28 +92,75 @@
 //    }
 //    return 0;
 //}
+//#include <bits/stdc++.h>
+//using namespace std;
+//int main()
+//{
+//    string variable = "quinstreet";
+//    int n = 2;
+//
+//    for(char& i : variable)
+//    {
+//        int count=0;
+//
+//        for(char& j : variable)
+//        {
+//           if(i==j){
+//               count++;
+//           }
+//
+//
+//        }
+//        if(count==n){
+//            cout<<i<<"->"<<n<<endl;
+//        }
+//    }
+//    return 0;
+//}
+//#include <bits/stdc++.h>
+//using namespace std;
+//int main()
+//{
+//    int t;
+//    cin >> t;
+//    for(int i=10;i>1;i--){
+//        if(t%i==0){
+//            cout<<i;
+//            break;
+//        }
+//    }
+//    return 0;
+//}
 #include <bits/stdc++.h>
 using namespace std;
+bool checkSame(vector<int> &v){
+    int temp=v[0];
+    for(auto x: v){
+        if(x!=temp){
+            return false;
+        }
+    }
+    return true;
+}
 int main()
 {
-    string variable = "quinstreet";
-    int n = 2;
-   
-    for(char& i : variable)
-    {
-        int count=0;
-        
-        for(char& j : variable)
-        {
-           if(i==j){
-               count++;
-           }
+    int t;
+    cin >> t;
+    while (t--)
+    {   int n;
+        cin>>n;
+        vector<int> v(n);
+        for(auto x: v){
+            cin>>x;
+        }
+        sort(v.begin(),v.end());
+        if(!checkSame(v)){
+            cout<<abs(v[0]-v[n-1])+ abs(v[n-1]-v[1])+ abs(v[1]-v[0]);
+        }else{
+            cout<<"0"<<endl;
+        }
 
-            
-        }
-        if(count==n){
-            cout<<i<<"->"<<n<<endl;
-        }
+
     }
     return 0;
 }
