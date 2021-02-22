@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 #include "binarySearchTree.h"
 using namespace std;
+#define COUNT 5  
 
 BinarySearchTreeNode<int> *takeTreeInput(){
     int rootData;
@@ -67,6 +68,23 @@ void printInRange(BinarySearchTreeNode<int>* root,int min,int max){
 
 }
 
+BinarySearchTreeNode<int>* deleteNode(BinarySearchTreeNode<int>* root,int data){
+
+}
+
+BinarySearchTreeNode<int>* insertNode(BinarySearchTreeNode<int>* root,int data){
+    if(root==NULL){
+        root= new BinarySearchTreeNode<int>(data);
+        return root;
+    }
+    if(data > root->data){
+        root->right=insertNode(root->right,data);
+    }else {
+        root->left=insertNode(root->left,data);
+    }
+    return root;
+}
+
 bool isBST(BinarySearchTreeNode<int>* root,int min= INT_MIN,int max=INT_MAX){
     if(root ==NULL){
         return true;
@@ -79,8 +97,23 @@ bool isBST(BinarySearchTreeNode<int>* root,int min= INT_MIN,int max=INT_MAX){
     return isLeftOk && isRightOk;
 }
 
+void print2DUtil(BinarySearchTreeNode<int> *root, int space)  
+{   
+    if (root == NULL)  
+        return;  
+    space += COUNT;  
+    print2DUtil(root->right, space);  
+    cout<<endl;  
+    for (int i = COUNT; i < space; i++)  
+        cout<<" ";  
+    cout<<root->data<<"\n";   
+    print2DUtil(root->left, space);  
+}  
+
 int main(){
     BinarySearchTreeNode<int>*root=takeTreeInput();
-    printInRange(root,20,50);
+    root=insertNode(root,55);
+    print2DUtil(root,0);
+
     return 0;
 }
