@@ -178,3 +178,10 @@ int main()
 
     return 0;
 }
+
+// Time complexity
+
+// Inster O(h)
+// Delete O(h)
+// Search O(h)
+// here h is the height of the tree and it should be a balanced tree
