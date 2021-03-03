@@ -63,7 +63,7 @@ class ourmap{
     public:
     void insert(string key,V value){
         int bucketIndex=getBucketIndex(key);
-        MapNode<V>* head=new MapNode<V>(key,value);
+        MapNode<V>* head=buckets[bucketIndex];
         while(head!=NULL){
             if(head->key==key){
                 head->value=value;
@@ -77,7 +77,26 @@ class ourmap{
         count++;
     }
     V remove(string key){
-
+        int bucketIndex=getBucketIndex(key);
+        MapNode<V>* head=buckets[bucketIndex];
+        MapNode<V>* prev=NULL;
+        while(head!=NULL){
+            if(head->key==key){
+            if(prev==NULL){
+                buckets[bucketIndex]=head->next;
+            }else {
+                prev->next=head->next;
+            }
+            V value=head->value;
+            head->next=NULL;
+            delete head;
+            count--;
+            return value;
+        }
+        prev=head;
+        head=head->next;
+        }
+        return 0;
     }
 
     
