@@ -44,6 +44,7 @@ void insert(Node* root,Node* temp){
         }
     }
 }
+ Node* head= new Node(999);
 
 void create(Node* root){
     int data;
@@ -51,21 +52,47 @@ void create(Node* root){
     Node* temp=new Node(data);
     if(root==NULL){
         root=temp;
-        Node* head= new Node(999);
-        head->left=root;
         head->right=head;
         head->rightBit=1;
+        head->left=root;
         head->leftBit=1;
         root->left=head;
         root->right=head;
+        
     }else{
         insert(root,temp);
+    }
+    
+}
+
+void preorder(Node* head){
+    Node* temp= head->left;
+    while(temp!=head){
+        while(temp->leftBit!=0){
+            cout<<temp->data;
+            temp=temp->left;
+        } 
+        cout<<temp->data;
+        while(temp->rightBit==0){
+            temp=temp->right;
+            if(temp==head){
+                return;
+            }
+        }
+        temp=temp->right;
     }
 }
 
 
 int main()
 {
+    int n;
+    cin>>n;
+    Node *root=NULL;
+    while(n--){
+        create(root);
+    };
+    preorder(head);
 
     return 0;
 }
