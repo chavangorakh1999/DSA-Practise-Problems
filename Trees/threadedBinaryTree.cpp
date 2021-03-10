@@ -1,98 +1,114 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node{
-    public:
+class Node
+{
+public:
     int data;
-    Node*left;
-    Node*right;
+    Node *left;
+    Node *right;
     int rightBit;
     int leftBit;
 
-    Node(int data){
-        this->data=data;
-        left=NULL;
-        right=NULL;
-        rightBit=0;
-        leftBit=0;
+    Node(int data)
+    {
+        this->data = data;
+        left = NULL;
+        right = NULL;
+        rightBit = 0;
+        leftBit = 0;
     }
-    ~Node(){
+    ~Node()
+    {
         delete left;
         delete right;
     }
-
 };
 
-void insert(Node* root,Node* temp){
-    if(root->data > temp->data){
-        if(root->left==NULL){
-            root->left=temp;
-            temp->left=root->left;
-            temp->right=root;
-            root->leftBit=1;
-        }else{
-            insert(root->left,temp);
-        }
-    }else if(root->data <temp->data){
-        if(root->right==NULL){
-            root->right=temp;
-            temp->right=root->right;
-            temp->left=root;
-            root->rightBit=1;
-        }else{
-            insert(root->right,temp);
-        }
+void insertInorder(Node *root, Node *temp)
+{
+    if (root == NULL)
+    {
+        root = temp;
+    }
+    if (root->data > temp->data)
+    {
+        temp->right = root;
+        temp->rightBit = 1;
+        temp->left = root->left;
+        temp->leftBit = 1;
+        root->left = temp;
+        root->leftBit = 0;
+    }
+    if (root->data < temp->data)
+    {
+        temp->right=root->right;
+        temp->rightBit=root->rightBit;
+        root->left=temp;
+        root->leftBit=1;
+        root->right=temp;     
     }
 }
- Node* head= new Node(999);
 
-void create(Node* root){
-    int data;
-    cin>>data;
-    Node* temp=new Node(data);
-    if(root==NULL){
-        root=temp;
-        head->right=head;
-        head->rightBit=1;
-        head->left=root;
-        head->leftBit=1;
-        root->left=head;
-        root->right=head;
-        
+Node *helper(Node *root, int data)
+{
+    Node *temp = new Node(data);
+    if (root == NULL)
+    {
+        Node *head = new Node(999);
+        root = temp;
+        head->left = root;
+        head->leftBit = 1;
+        head->right = head;
+        head->rightBit = 1;
+    }
+    Node *dupliRoot=root;
+    while(dupliRoot){
+        if(dupliRoot->data > temp->data){
+            dupliRoot=dupliRoot->left;
+        }
+        if(dupliRoot->data < temp->data){
+            dupliRoot=dupliRoot->right;
+        }
+    }
+    insertInorder(dupliRoot, temp);
+    return root;
+}
+
+Node * inorder(Node * root){
+    Node * position;
+    if(root->rightBit==0){
+        return root->right;
     }else{
-        insert(root,temp);
+        position=root->right;
+        while(position->leftBit==1){
+            position=position->left;
+        }
+        return position;
+    }
+}
+
+void print(Node * root){
+    Node *temp=root;
+    while (1)
+    {
+        temp=inorder(root);
+        if(temp==root) return;
+        cout<<temp->data;
     }
     
 }
 
-void preorder(Node* head){
-    Node* temp= head->left;
-    while(temp!=head){
-        while(temp->leftBit!=0){
-            cout<<temp->data;
-            temp=temp->left;
-        } 
-        cout<<temp->data;
-        while(temp->rightBit==0){
-            temp=temp->right;
-            if(temp==head){
-                return;
-            }
-        }
-        temp=temp->right;
-    }
-}
-
-
 int main()
 {
     int n;
-    cin>>n;
-    Node *root=NULL;
+    cin >> n;
+    Node*root;
     while(n--){
-        create(root);
-    };
-    preorder(head);
-
+        int data;
+        cin>>data;
+        root=helper(root,data);
+    }
+    print(root);
     return 0;
 }
